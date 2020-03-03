@@ -21,8 +21,8 @@ if onmaster; then
 fi
 
 # Perform the build
-docker build -t datawire/ambassador-auth-service:latest .
-docker tag datawire/ambassador-auth-service:latest datawire/ambassador-auth-service:$COMMIT
+docker build -t tiancanyu/ambassador-auth-service:latest .
+docker tag tiancanyu/ambassador-auth-service:latest tiancanyu/ambassador-auth-service:$COMMIT
 
 if onmaster; then
     # Avoid `set -x` leaking secret info into Travis logs
@@ -30,8 +30,8 @@ if onmaster; then
     echo "+docker login..."
     docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
     set -x
-    docker push datawire/ambassador-auth-service:latest
-    docker push datawire/ambassador-auth-service:$COMMIT
+    docker push tiancanyu/ambassador-auth-service:latest
+    docker push tiancanyu/ambassador-auth-service:$COMMIT
 else
     echo "not on master; not pushing to Docker Hub"
 fi
